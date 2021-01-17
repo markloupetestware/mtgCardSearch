@@ -19,18 +19,34 @@ const SideDisplay = ({
   return (
     <div className={styles.tabsMainContainer}>
       <div className={styles.tabTitleContainer}>
-        <div className={[styles.historyTabTitle, styles.center,styles.padding].join(" ")} onClick={()=>setCurrentTab({
-    HistoryTab: true,
-    CommanderTab: false,
-  })}>
+        <div
+          className={[
+            styles.historyTabTitle,
+            styles.center,
+            styles.padding,
+          ].join(" ")}
+          onClick={() =>
+            setCurrentTab({
+              HistoryTab: true,
+              CommanderTab: false,
+            })
+          }
+        >
           HISTORY
         </div>
-        <div className={[styles.commanderTabTitle, styles.center, styles.padding].join(" ")} onClick={()=>{
-          setCurrentTab({
-            HistoryTab: false,
-            CommanderTab: true,
-          })
-        }}>
+        <div
+          className={[
+            styles.commanderTabTitle,
+            styles.center,
+            styles.padding,
+          ].join(" ")}
+          onClick={() => {
+            setCurrentTab({
+              HistoryTab: false,
+              CommanderTab: true,
+            });
+          }}
+        >
           COMMANDER
         </div>
       </div>
