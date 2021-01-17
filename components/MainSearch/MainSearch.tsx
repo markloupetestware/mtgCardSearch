@@ -121,6 +121,7 @@ const MainSearch = ({
         </form>
       </div>
       <div className={[styles.suggestionsContainer, styles.center].join(" ")}>
+      <div className={[styles.center2].join(" ")}>
         {suggestions.map((item, i) => {
           return (
             <button
@@ -133,6 +134,7 @@ const MainSearch = ({
             </button>
           );
         })}
+      </div>
       </div>
       {currentCard ? (
         <div className={[styles.cardContainer, styles.center].join(" ")}>
