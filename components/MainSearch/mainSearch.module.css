@@ -1,7 +1,7 @@
 .mainContainer {
   display: grid;
-  grid-template-areas: "searchInputContainer" "cardContainer";
-  grid-template-rows: 50px 800px;
+  grid-template-areas: "searchInputContainer" "suggestionsContainer" "cardContainer";
+  grid-template-rows: 60px 1px 800px;
 }
 
 .searchInputContainer {
@@ -23,15 +23,11 @@
   align-items: center;
   justify-content: center;
 }
-.center2 {
-  display: grid;
-}
 
 .suggestionsContainer {
-  width: 500px;
-  transform: translate(200px, -780px);
-  max-height: 600px;
-  overflow-y: scroll;
+  grid-area: suggestionsContainer;
+  display: grid;
+  grid-row: 100%;
 }
 
 .suggestionItem {
@@ -44,6 +40,7 @@
   font-size: 1em;
   max-width: 500px;
   min-width: 500px;
+  z-index: 2;
 }
 
 .suggestionItem :hover {
