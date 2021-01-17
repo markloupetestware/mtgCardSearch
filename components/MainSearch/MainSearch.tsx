@@ -9,15 +9,22 @@ import useDebounce from "../../utils/useDebounce.tsx";
 
 import styles from "./mainSearch.module.css";
 
+interface HistoryTabProps {
+  searchHistory: any,
+  setCurrentCard: any,
+  setSearchHistory: any,
+  currentCard: any,
+}
+
 const MainSearch = ({
   setSearchHistory,
   searchHistory,
   currentCard,
   setCurrentCard,
-}) => {
+}:HistoryTabProps) => {
   const [value, setValue] = useState("");
   const [searchingSuggestions, setSearchingSuggestions] = useState(false);
-  const [suggestions, setSuggestions] = useState([]);
+  const [suggestions, setSuggestions] = useState<any>([]);
   const [loading, setLoading] = useState(false);
 
   const debouncedSearchTerm = useDebounce(value, 500);
@@ -29,35 +36,35 @@ const MainSearch = ({
         setSuggestions([]);
       } else if (value.length > 2) {
         getCard(debouncedSearchTerm)
-          .then((data) => {
+          .then((data: any) => {
             setSearchingSuggestions(false);
-            const results = data.payload.data.map((item, i) => {
+            const results = data.payload.data.map((item: any) => {
               return item.name;
             });
             console.log(results, "results");
             setSuggestions(results);
           })
-          .catch((error) => setSuggestions(["No cards found"]));
+          .catch((error: any) => setSuggestions(["No cards found"]));
       }
     } else {
       setSuggestions([]);
     }
   }, [debouncedSearchTerm]);
 
-  function handleChange(e) {
+  function handleChange(e: any) {
     setValue(e.target.value);
   }
 
-  function handleEnterPress(e) {
+  function handleEnterPress(e: any) {
     if (e.key == "Enter") {
       setSuggestions([]);
       setLoading(true);
       getCard(value)
-        .then((data) => {
+        .then((data: any) => {
           setCurrentCard(data.payload.data[0]);
         })
         .then(() => {
-          const results = searchHistory.map((item, i) => {
+          const results = searchHistory.map((item: any) => {
             return item.name;
           });
           if (!results.includes(currentCard.name)) {
@@ -68,22 +75,22 @@ const MainSearch = ({
           setValue("");
           setLoading(false);
         })
-        .catch((error) => {
+        .catch((error: any) => {
           console.log(error);
           setLoading(false);
         });
     }
   }
 
-  function handleClick(e) {
+  function handleClick(e:any) {
     setSuggestions([]);
     setLoading(true);
     getCard(e.target.value)
-      .then((data) => {
+      .then((data:any) => {
         setCurrentCard(data.payload.data[0]);
       })
       .then(() => {
-        const results = searchHistory.map((item, i) => {
+        const results = searchHistory.map((item:any) => {
           return item.name;
         });
         if (!results.includes(currentCard.name)) {
@@ -121,7 +128,7 @@ const MainSearch = ({
         </form>
       </div>
       <div className={[styles.suggestionsContainer, styles.center].join(" ")}>
-        {suggestions.map((item, i) => {
+        {suggestions.map((item: any, i: number) => {
           return (
             <button
               value={item}

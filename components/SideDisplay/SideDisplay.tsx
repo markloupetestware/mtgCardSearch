@@ -5,12 +5,19 @@ import CommanderTab from "../CommanderTab/CommanderTab.tsx";
 
 import styles from "./SideDisplay.module.css";
 
+interface HistoryTabProps {
+  searchHistory: any,
+  setCurrentCard: any,
+  setSearchHistory: any,
+  currentCard: any,
+}
+
 const SideDisplay = ({
   searchHistory,
   setCurrentCard,
   setSearchHistory,
   currentCard,
-}) => {
+}:HistoryTabProps) => {
   const [currentTab, setCurrentTab] = useState({
     HistoryTab: true,
     CommanderTab: false,

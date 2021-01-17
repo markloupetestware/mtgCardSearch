@@ -1,13 +1,20 @@
 import styles from "./historyTab.module.css";
 
+interface HistoryTabProps {
+  searchHistory: any,
+  setCurrentCard: any,
+  setSearchHistory: any,
+  currentCard: any,
+}
+
 const HistoryTab = ({
   searchHistory,
   setCurrentCard,
   setSearchHistory,
   currentCard,
-}) => {
-  function handleClick(i) {
-    const results = searchHistory.map((item) => {
+}:HistoryTabProps) => {
+  function handleClick(i: number) {
+    const results = searchHistory.map((item: any) => {
       return item.name;
     });
     if (!results.includes(currentCard.name)) {
@@ -18,7 +25,7 @@ const HistoryTab = ({
   return (
     <div className={[styles.historyContainer].join(" ")}>
       {searchHistory.length > 1
-        ? searchHistory.map((item, i) => {
+        ? searchHistory.map((item: any, i: number) => {
             return (
               <>
                 {item.image_uris?.small ? (
