@@ -4,8 +4,8 @@ import React from "react";
 
 import TextField from "@material-ui/core/TextField";
 
-import getCard from "../../utils/getCard.tsx";
-import useDebounce from "../../utils/useDebounce.tsx";
+import getCard from "../../utils/getCard";
+import useDebounce from "../../utils/useDebounce";
 
 import styles from "./mainSearch.module.css";
 

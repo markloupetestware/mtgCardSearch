@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import HistoryTab from "../HistoryTab/HistoryTab.tsx";
-import CommanderTab from "../CommanderTab/CommanderTab.tsx";
+import HistoryTab from "../HistoryTab/HistoryTab";
+import CommanderTab from "../CommanderTab/CommanderTab";
 
 import styles from "./SideDisplay.module.css";
 
