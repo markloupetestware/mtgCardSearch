@@ -1,5 +1,5 @@
 import queryString from "query-string";
-import { defaultHeaders } from "./config.ts";
+import { defaultHeaders } from "./config";
 
 // A simple union type for the API Methods available.
 type APIMethod = "GET" | "POST" | "PUT" | "DELETE";

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
-import MainSearch from "../components/MainSearch/MainSearch.tsx";
-import SideDisplay from "../components/SideDisplay/SideDisplay.tsx";
+import MainSearch from "../components/MainSearch/MainSearch";
+import SideDisplay from "../components/SideDisplay/SideDisplay";
 
 import styles from "../styles/Home.module.css";
 
