@@ -1,0 +1,87 @@
+.mainContainer {
+  display: grid;
+  grid-template-areas: "searchInputContainer" "cardContainer";
+  grid-template-rows: 50px 800px;
+}
+
+.searchInputContainer {
+  grid-area: searchInputContainer;
+  width: 300px;
+  justify-self: center;
+}
+
+.searchInputForm {
+  width: 100%;
+}
+
+.padding {
+  padding: 10px;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.suggestionsContainer {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 250px;
+  /* transform: translateY(70px); */
+}
+
+.suggestionItem {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border: solid rgba(197, 197, 197, 0.403) 1px;
+  padding: 4px;
+  cursor: pointer;
+}
+.cardContainer {
+  grid-area: cardContainer;
+}
+.loadingContainer {
+  position: absolute;
+  /* transform: translate(90px, -470px); */
+}
+.loadingTitle {
+  color: white;
+  font-size: 40px;
+}
+.ldsRing {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  transform: translate(76px, -25px);
+}
+.ldsRing div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  margin: 8px;
+  border: 14px solid #fff;
+  border-radius: 50%;
+  animation: ldsRing 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: rgb(255, 255, 255) transparent transparent transparent;
+}
+.ldsRing div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.ldsRing div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.ldsRing div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes ldsRing {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

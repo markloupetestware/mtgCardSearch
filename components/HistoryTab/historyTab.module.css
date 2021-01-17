@@ -1,0 +1,30 @@
+.smallImage {
+  /* position: relative; */
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.hoverImage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: none;
+}
+.historyContainer {
+  background-color: rgb(223, 228, 163);
+  display: grid;
+  grid-template-columns: repeat(10, minmax(10px, max-content));
+  grid-template-rows: repeat(auto-fit, minmax(10px, max-content));
+}
+.smallImage:hover + .hoverImage {
+  display: block;
+}
+.padding {
+  padding: 5px;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

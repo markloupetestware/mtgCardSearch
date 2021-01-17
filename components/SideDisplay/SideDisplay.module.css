@@ -1,0 +1,34 @@
+.tabsMainContainer {
+  display: grid;
+  grid-template-areas: "tabTitles" "tabContainer";
+}
+.tabTitleContainer {
+  grid-area: tabTitles;
+  display: grid;
+  grid-template-areas: "historyTabTitle commanderTabTitle";
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 5px;
+}
+.historyTabTitle {
+  grid-area: historyTabTitle;
+  cursor: pointer;
+  background-color: cornflowerblue;
+  margin: 5px;
+}
+.commanderTabTitle {
+  grid-area: commanderTabTitle;
+  cursor: pointer;
+  background-color: cornflowerblue;
+  margin: 5px;
+}
+.tabsContainer {
+  grid-area: tabContainer;
+}
+.padding {
+  padding: 5px;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
