@@ -47,7 +47,7 @@ const MainSearch = ({
   setCurrentCard,
 }: HistoryTabProps) => {
   const [value, setValue] = useState("");
-  const [searchingSuggestions, setSearchingSuggestions] = useState(false);
+  // const [searchingSuggestions, setSearchingSuggestions] = useState(false);
   const [suggestions, setSuggestions] = useState<any>([]);
   const [loading, setLoading] = useState(false);
 
@@ -55,13 +55,13 @@ const MainSearch = ({
 
   useEffect(() => {
     if (debouncedSearchTerm) {
-      setSearchingSuggestions(true);
+      // setSearchingSuggestions(true);
       if (value.length < 2) {
         setSuggestions([]);
       } else if (value.length > 2) {
         getCard(debouncedSearchTerm)
           .then((data: any) => {
-            setSearchingSuggestions(false);
+            // setSearchingSuggestions(false);
             const results = data.payload.data.map((item: any) => {
               return item.name;
             });
@@ -169,7 +169,11 @@ const MainSearch = ({
         <div className={[styles.cardContainer, styles.center].join(" ")}>
           {loading ? (
             <>
-              <img height="680px" src="cardBack.png" />
+              <img
+                className={styles.cardBack}
+                height="680px"
+                src="cardBack.png"
+              />
               <div className={styles.loadingContainer}>
                 <>
                   <h1 className={styles.loadingTitle}>LOADING CARD...</h1>

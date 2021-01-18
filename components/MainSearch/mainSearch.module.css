@@ -43,8 +43,10 @@
   z-index: 2;
 }
 
-.suggestionItem :hover {
+.cardBack {
+  border-radius: 5% / 3.75%;
 }
+
 .cardContainer {
   grid-area: cardContainer;
 }
