@@ -27,10 +27,13 @@ const SideDisplay = ({
     <div className={styles.tabsMainContainer}>
       <div className={styles.tabTitleContainer}>
         <div
+       
+        
           className={[
             styles.historyTabTitle,
             styles.center,
             styles.padding,
+            currentTab.HistoryTab ? null : styles.notSelectedTab
           ].join(" ")}
           onClick={() =>
             setCurrentTab({
@@ -46,6 +49,7 @@ const SideDisplay = ({
             styles.commanderTabTitle,
             styles.center,
             styles.padding,
+           currentTab.CommanderTab ? null : styles.notSelectedTab
           ].join(" ")}
           onClick={() => {
             setCurrentTab({

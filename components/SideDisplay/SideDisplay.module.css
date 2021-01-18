@@ -23,6 +23,9 @@
   background-color: cornflowerblue;
   margin: 5px;
 }
+.notSelectedTab {
+  background-color: grey;
+}
 .historyTab {
   height: 100%;
 }
