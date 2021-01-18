@@ -1,10 +1,10 @@
 import styles from "./historyTab.module.css";
 
 interface HistoryTabProps {
-  searchHistory: any,
-  setCurrentCard: any,
-  setSearchHistory: any,
-  currentCard: any,
+  searchHistory: any;
+  setCurrentCard: any;
+  setSearchHistory: any;
+  currentCard: any;
 }
 
 const HistoryTab = ({
@@ -12,7 +12,7 @@ const HistoryTab = ({
   setCurrentCard,
   setSearchHistory,
   currentCard,
-}:HistoryTabProps) => {
+}: HistoryTabProps) => {
   function handleClick(i: number) {
     const results = searchHistory.map((item: any) => {
       return item.name;

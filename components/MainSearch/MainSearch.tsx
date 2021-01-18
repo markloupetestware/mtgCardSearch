@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 
 import TextField from "@material-ui/core/TextField";
-import { withStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { withStyles, Theme, createStyles } from "@material-ui/core/styles";
 
 import getCard from "../../utils/getCard";
 import useDebounce from "../../utils/useDebounce";
@@ -11,30 +11,30 @@ import useDebounce from "../../utils/useDebounce";
 import styles from "./mainSearch.module.css";
 
 interface HistoryTabProps {
-  searchHistory: any,
-  setCurrentCard: any,
-  setSearchHistory: any,
-  currentCard: any,
+  searchHistory: any;
+  setCurrentCard: any;
+  setSearchHistory: any;
+  currentCard: any;
 }
 
 const SearchTextField = withStyles({
   root: {
     backgroundColor: "white",
-    '& label.Mui-focused': {
-      color: 'green',
+    "& label.Mui-focused": {
+      color: "green",
     },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: 'green',
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "green",
     },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: 'red',
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "red",
       },
-      '&:hover fieldset': {
-        borderColor: 'yellow',
+      "&:hover fieldset": {
+        borderColor: "yellow",
       },
-      '&.Mui-focused fieldset': {
-        borderColor: 'green',
+      "&.Mui-focused fieldset": {
+        borderColor: "green",
       },
     },
   },
@@ -45,9 +45,9 @@ const MainSearch = ({
   searchHistory,
   currentCard,
   setCurrentCard,
-}:HistoryTabProps) => {
+}: HistoryTabProps) => {
   const [value, setValue] = useState("");
-  const [searchingSuggestions, setSearchingSuggestions] = useState(false);
+  // const [searchingSuggestions, setSearchingSuggestions] = useState(false);
   const [suggestions, setSuggestions] = useState<any>([]);
   const [loading, setLoading] = useState(false);
 
@@ -55,13 +55,13 @@ const MainSearch = ({
 
   useEffect(() => {
     if (debouncedSearchTerm) {
-      setSearchingSuggestions(true);
+      // setSearchingSuggestions(true);
       if (value.length < 2) {
         setSuggestions([]);
       } else if (value.length > 2) {
         getCard(debouncedSearchTerm)
           .then((data: any) => {
-            setSearchingSuggestions(false);
+            // setSearchingSuggestions(false);
             const results = data.payload.data.map((item: any) => {
               return item.name;
             });
@@ -106,15 +106,15 @@ const MainSearch = ({
     }
   }
 
-  function handleClick(e:any) {
+  function handleClick(e: any) {
     setSuggestions([]);
     setLoading(true);
     getCard(e.target.value)
-      .then((data:any) => {
+      .then((data: any) => {
         setCurrentCard(data.payload.data[0]);
       })
       .then(() => {
-        const results = searchHistory.map((item:any) => {
+        const results = searchHistory.map((item: any) => {
           return item.name;
         });
         if (!results.includes(currentCard.name)) {
@@ -169,7 +169,11 @@ const MainSearch = ({
         <div className={[styles.cardContainer, styles.center].join(" ")}>
           {loading ? (
             <>
-              <img height="680px" src="cardBack.png" />
+              <img
+                className={styles.cardBack}
+                height="680px"
+                src="cardBack.png"
+              />
               <div className={styles.loadingContainer}>
                 <>
                   <h1 className={styles.loadingTitle}>LOADING CARD...</h1>
@@ -183,7 +187,10 @@ const MainSearch = ({
               </div>
             </>
           ) : (
-            <img src={currentCard.image_uris.normal} />
+            <img
+              className={styles.currentCardImage}
+              src={currentCard.image_uris.normal}
+            />
           )}
         </div>
       ) : null}

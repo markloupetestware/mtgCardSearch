@@ -2,6 +2,7 @@
   /* position: relative; */
   cursor: pointer;
   margin-bottom: 5px;
+  border-radius: 5% / 3.75%;
 }
 .hoverImage {
   position: fixed;
@@ -9,12 +10,15 @@
   left: 0;
   z-index: 1;
   display: none;
+  border-radius: 5% / 3.75%;
 }
 .historyContainer {
   display: grid;
   grid-template-columns: repeat(10, minmax(10px, max-content));
   grid-template-rows: repeat(auto-fit, minmax(10px, max-content));
   overflow: hidden;
+  padding-right: 73px;
+  padding-top: 10px;
 }
 .smallImage:hover + .hoverImage {
   display: block;

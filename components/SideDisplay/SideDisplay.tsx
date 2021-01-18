@@ -6,10 +6,10 @@ import CommanderTab from "../CommanderTab/CommanderTab";
 import styles from "./SideDisplay.module.css";
 
 interface HistoryTabProps {
-  searchHistory: any,
-  setCurrentCard: any,
-  setSearchHistory: any,
-  currentCard: any,
+  searchHistory: any;
+  setCurrentCard: any;
+  setSearchHistory: any;
+  currentCard: any;
 }
 
 const SideDisplay = ({
@@ -17,7 +17,7 @@ const SideDisplay = ({
   setCurrentCard,
   setSearchHistory,
   currentCard,
-}:HistoryTabProps) => {
+}: HistoryTabProps) => {
   const [currentTab, setCurrentTab] = useState({
     HistoryTab: true,
     CommanderTab: false,
@@ -27,10 +27,13 @@ const SideDisplay = ({
     <div className={styles.tabsMainContainer}>
       <div className={styles.tabTitleContainer}>
         <div
+       
+        
           className={[
             styles.historyTabTitle,
             styles.center,
             styles.padding,
+            currentTab.HistoryTab ? null : styles.notSelectedTab
           ].join(" ")}
           onClick={() =>
             setCurrentTab({
@@ -46,6 +49,7 @@ const SideDisplay = ({
             styles.commanderTabTitle,
             styles.center,
             styles.padding,
+           currentTab.CommanderTab ? null : styles.notSelectedTab
           ].join(" ")}
           onClick={() => {
             setCurrentTab({
@@ -58,15 +62,24 @@ const SideDisplay = ({
         </div>
       </div>
       <div className={styles.tabsContainer}>
-        {currentTab.HistoryTab ? (
+        <div
+          className={styles.historyTab}
+          style={{ display: currentTab.CommanderTab ? "none" : "block" }}
+        >
           <HistoryTab
             searchHistory={searchHistory}
             setCurrentCard={setCurrentCard}
             setSearchHistory={setSearchHistory}
             currentCard={currentCard}
           />
-        ) : null}
-        {currentTab.CommanderTab ? <CommanderTab /> : null}
+        </div>
+
+        <div
+          className={styles.commanderTab}
+          style={{ display: currentTab.HistoryTab ? "none" : "block" }}
+        >
+          <CommanderTab currentCard={currentCard} />
+        </div>
       </div>
     </div>
   );

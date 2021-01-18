@@ -1,34 +1,20 @@
-import { StylesProvider } from "@material-ui/core";
+import { useState } from "react";
+import PlayerContainer from "../PlayerContainer/PlayerContainer";
 
 import styles from "./commanderTab.module.css";
 
-const CommanderTab = () => {
-  const playerButtonData = [
-    {
-      value: 2,
-    },
-    {
-      value: 3,
-    },
-    {
-      value: 4,
-    },
-    {
-      value: 5,
-    },
-    {
-      value: 6,
-    },
-  ];
+const CommanderTab = ({ currentCard }: any) => {
+  const playerContainers = Array.apply(null, Array(6)).map(function () {});
 
   return (
     <div className={styles.commanderContainer}>
-      <div className={styles.commanderPlayerCountContainer}>
-        <h1>How Many Players</h1>
-        {playerButtonData.map((item, i) => {
-          return <button key={i}>{item.value}</button>;
-        })}
-      </div>
+      {playerContainers.map((item, i) => {
+        return (
+          <div>
+            <PlayerContainer currentCard={currentCard} index={i} />
+          </div>
+        );
+      })}
     </div>
   );
 };
