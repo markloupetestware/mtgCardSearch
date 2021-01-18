@@ -43,12 +43,15 @@
   z-index: 2;
 }
 
-.suggestionItem :hover {
-  background-color: black;
-  color: red;
+.cardBack {
+  border-radius: 5% / 3.75%;
 }
+
 .cardContainer {
   grid-area: cardContainer;
+}
+.currentCardImage {
+  border-radius: 5% / 3.75%;
 }
 .loadingContainer {
   position: absolute;
