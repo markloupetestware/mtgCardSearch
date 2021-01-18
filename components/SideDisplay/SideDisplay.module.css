@@ -1,6 +1,8 @@
 .tabsMainContainer {
   display: grid;
   grid-template-areas: "tabTitles" "tabContainer";
+  grid-template-rows: auto 7fr;
+  height: 100%;
 }
 .tabTitleContainer {
   grid-area: tabTitles;
@@ -21,8 +23,15 @@
   background-color: cornflowerblue;
   margin: 5px;
 }
+.historyTab {
+  height: 100%;
+}
+.commanderTab {
+  height: 100%;
+}
 .tabsContainer {
   grid-area: tabContainer;
+  height: 100%;
 }
 .padding {
   padding: 5px;

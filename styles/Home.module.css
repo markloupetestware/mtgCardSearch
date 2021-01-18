@@ -23,7 +23,8 @@
   height: 100vh;
 }
 
-.title {
+.sideContainer {
+  height: 100%;
 }
 
 .center {

@@ -58,7 +58,7 @@ const SideDisplay = ({
         </div>
       </div>
       <div className={styles.tabsContainer}>
-        <div style={{ display: currentTab.CommanderTab ? "none" : "block" }}>
+        <div className={styles.historyTab} style={{ display: currentTab.CommanderTab ? "none" : "block" }}>
           <HistoryTab
             searchHistory={searchHistory}
             setCurrentCard={setCurrentCard}
@@ -67,7 +67,7 @@ const SideDisplay = ({
           />
         </div>
 
-        <div style={{ display: currentTab.HistoryTab ? "none" : "block" }}>
+        <div className={styles.commanderTab} style={{ display: currentTab.HistoryTab ? "none" : "block" }}>
           <CommanderTab />
         </div>
       </div>
