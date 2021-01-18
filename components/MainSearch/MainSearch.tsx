@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 
 import TextField from "@material-ui/core/TextField";
+import { withStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 import getCard from "../../utils/getCard";
 import useDebounce from "../../utils/useDebounce";
@@ -15,6 +16,29 @@ interface HistoryTabProps {
   setSearchHistory: any,
   currentCard: any,
 }
+
+const SearchTextField = withStyles({
+  root: {
+    backgroundColor: "white",
+    '& label.Mui-focused': {
+      color: 'green',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'green',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'red',
+      },
+      '&:hover fieldset': {
+        borderColor: 'yellow',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'green',
+      },
+    },
+  },
+})(TextField);
 
 const MainSearch = ({
   setSearchHistory,
@@ -116,14 +140,14 @@ const MainSearch = ({
           autoComplete="off"
           onSubmit={(event) => event.preventDefault()}
         >
-          <TextField
+          <SearchTextField
             onKeyDown={handleEnterPress}
             fullWidth
             value={value}
             onChange={handleChange}
             id="filled-basic"
             label="Search"
-            variant="outlined"
+            variant="filled"
           />
         </form>
       </div>
