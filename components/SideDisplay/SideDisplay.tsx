@@ -6,10 +6,10 @@ import CommanderTab from "../CommanderTab/CommanderTab";
 import styles from "./SideDisplay.module.css";
 
 interface HistoryTabProps {
-  searchHistory: any,
-  setCurrentCard: any,
-  setSearchHistory: any,
-  currentCard: any,
+  searchHistory: any;
+  setCurrentCard: any;
+  setSearchHistory: any;
+  currentCard: any;
 }
 
 const SideDisplay = ({
@@ -17,7 +17,7 @@ const SideDisplay = ({
   setCurrentCard,
   setSearchHistory,
   currentCard,
-}:HistoryTabProps) => {
+}: HistoryTabProps) => {
   const [currentTab, setCurrentTab] = useState({
     HistoryTab: true,
     CommanderTab: false,
@@ -58,15 +58,18 @@ const SideDisplay = ({
         </div>
       </div>
       <div className={styles.tabsContainer}>
-        {currentTab.HistoryTab ? (
+        <div style={{ display: currentTab.CommanderTab ? "none" : "block" }}>
           <HistoryTab
             searchHistory={searchHistory}
             setCurrentCard={setCurrentCard}
             setSearchHistory={setSearchHistory}
             currentCard={currentCard}
           />
-        ) : null}
-        {currentTab.CommanderTab ? <CommanderTab /> : null}
+        </div>
+
+        <div style={{ display: currentTab.HistoryTab ? "none" : "block" }}>
+          <CommanderTab />
+        </div>
       </div>
     </div>
   );

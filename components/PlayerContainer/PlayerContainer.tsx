@@ -1,16 +1,24 @@
-
+import { useState } from "react";
 
 interface PlayerContainerProps {
-    index: number
+  index: number;
 }
 
-const PlayerContainer = ({index}: PlayerContainerProps) => {
-    return(
-<div>
-    <h1>Player {index+1}</h1>
+const PlayerContainer = ({ index }: PlayerContainerProps) => {
+  const [lifeTotal, setLifeTotal] = useState(40);
 
-</div>
-    )
-}
+  return (
+    <div>
+      <h1>Player {index + 1}</h1>
+      <button
+        onClick={() => {
+          setLifeTotal(lifeTotal + 1);
+        }}
+      >
+        {lifeTotal}
+      </button>
+    </div>
+  );
+};
 
-export default PlayerContainer
+export default PlayerContainer;
