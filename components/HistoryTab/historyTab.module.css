@@ -18,6 +18,7 @@
   grid-template-rows: repeat(auto-fit, minmax(10px, max-content));
   overflow: hidden;
   padding-right: 73px;
+  padding-top: 10px;
 }
 .smallImage:hover + .hoverImage {
   display: block;
