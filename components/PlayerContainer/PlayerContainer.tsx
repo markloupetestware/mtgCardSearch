@@ -20,68 +20,90 @@ const PlayerContainer = ({ currentCard }: any) => {
       setPlayerInfo({ ...playerInfo, playerName: playerNameInput });
     }
   }
+
+  function handleSetCommander() {
+    if (currentCard) {
+      setCommanderCard(!commanderCard);
+    }
+  }
+
   useEffect(() => {
-    setActual(currentCard?.image_uris?.small);
+    if (currentCard) {
+      setActual(currentCard?.image_uris?.small);
+    }
   }, [commanderCard]);
 
   return (
-    <div className={styles.playerContainers}>
-      {playerInfo.playerName ? (
-        <div
-          className={styles.playerName}
-          onClick={() => {
-            setPlayerInfo({ ...playerInfo, playerName: "" });
-          }}
-        >
-          {playerInfo.playerName}
-        </div>
-      ) : (
-        <>
-          <input
-            placeholder={"set player name"}
-            onKeyDown={handleKeyDown}
-            value={playerNameInput}
-            onChange={handleChange}
+    <div className={styles.playerContainer}>
+      <div className={styles.infoContainer}>
+        {playerInfo.playerName ? (
+          <div
             className={styles.playerName}
-          />
+            onClick={() => {
+              setPlayerInfo({ ...playerInfo, playerName: "" });
+            }}
+          >
+            {playerInfo.playerName}
+          </div>
+        ) : (
+          <>
+            <input
+              placeholder={"set player name"}
+              onKeyDown={handleKeyDown}
+              value={playerNameInput}
+              onChange={handleChange}
+              className={styles.playerNameInput}
+            />
+            <button
+              onClick={() =>
+                setPlayerInfo({ ...playerInfo, playerName: playerNameInput })
+              }
+            >
+              set
+            </button>
+          </>
+        )}
+        <div className={styles.lifeTotalsContainer}>
           <button
+            className={styles.lifeButton}
             onClick={() =>
-              setPlayerInfo({ ...playerInfo, playerName: playerNameInput })
+              setPlayerInfo({
+                ...playerInfo,
+                lifeTotal: playerInfo.lifeTotal + 1,
+              })
             }
           >
-            set
+            +
           </button>
-        </>
-      )}
-      <div className={styles.lifeTotalsContainer}>
+          <div className={styles.playerLifeNumber}>
+            {`   ${playerInfo.lifeTotal}   `}
+          </div>
+          <button
+            className={styles.lifeButton}
+            onClick={() =>
+              setPlayerInfo({
+                ...playerInfo,
+                lifeTotal: playerInfo.lifeTotal - 1,
+              })
+            }
+          >
+            -
+          </button>
+        </div>
+      </div>
+      <div className={styles.commanderCardContainer}>
+        <div className={styles.commanderCardImageContainer}>
+          {commanderCard ? (
+            <img className={styles.setCommanderCard} src={actual} />
+          ) : (
+            <img className={styles.cardBack} src="cardBack.png" />
+          )}
+        </div>
         <button
-          onClick={() =>
-            setPlayerInfo({
-              ...playerInfo,
-              lifeTotal: playerInfo.lifeTotal - 1,
-            })
-          }
+          className={styles.commanderCardButton}
+          onClick={handleSetCommander}
         >
-          -
-        </button>
-        {`   ${playerInfo.lifeTotal}   `}
-        <button
-          onClick={() =>
-            setPlayerInfo({
-              ...playerInfo,
-              lifeTotal: playerInfo.lifeTotal + 1,
-            })
-          }
-        >
-          +
-        </button>
-        {commanderCard ? (
-          <img className={styles.setCommanderCard} src={actual} />
-        ) : (
-          <img className={styles.cardBack} src="cardBack.png" />
-        )}
-        <button onClick={() => setCommanderCard(!commanderCard)}>
-          Set Commander
+          {commanderCard ? "Reset Commander" : "Set Commander"}
         </button>
       </div>
     </div>

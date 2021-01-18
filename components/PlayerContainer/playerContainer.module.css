@@ -1,4 +1,51 @@
+.playerContainer {
+  display: grid;
+  grid-template-areas: "details commander";
+  grid-template-columns: 1fr 1fr;
+  padding: 10px;
+  margin: 5px;
+  background-color: rgb(78, 78, 78);
+}
+.playerName {
+  font-size: 1.2em;
+}
+.commanderCardContainer {
+  grid-area: commander;
+  display: grid;
+  grid-template-areas: "commanderCardImageContainer" "commanderCardButton";
+}
+.commanderCardButton {
+  grid-area: commanderCardButton;
+  width: 146px;
+}
+.commanderCardImageContainer {
+  grid-area: commanderCardImageContainer;
+}
+.infoContainer {
+  grid-area: details;
+}
+.lifeButton {
+  background-color: black;
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+}
+.lifeButton:active {
+  background-color: white;
+  color: black;
+}
+.playerLifeNumber {
+  font-size: 1.4em;
+}
+.setCommanderCard {
+  border-radius: 5% / 3.75%;
+}
 .cardBack {
   border-radius: 5% / 3.75%;
-  height: 200px;
+  height: 204px;
 }
