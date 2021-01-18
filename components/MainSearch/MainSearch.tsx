@@ -183,7 +183,7 @@ const MainSearch = ({
               </div>
             </>
           ) : (
-            <img src={currentCard.image_uris.normal} />
+            <img className={styles.currentCardImage} src={currentCard.image_uris.normal} />
           )}
         </div>
       ) : null}

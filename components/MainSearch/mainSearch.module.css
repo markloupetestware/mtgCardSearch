@@ -44,11 +44,12 @@
 }
 
 .suggestionItem :hover {
-  background-color: black;
-  color: red;
 }
 .cardContainer {
   grid-area: cardContainer;
+}
+.currentCardImage {
+  border-radius: 5% / 3.75%;
 }
 .loadingContainer {
   position: absolute;
