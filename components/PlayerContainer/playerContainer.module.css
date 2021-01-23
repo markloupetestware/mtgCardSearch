@@ -49,3 +49,22 @@
   border-radius: 5% / 3.75%;
   height: 204px;
 }
+
+.suggestionsContainer {
+  grid-area: suggestionsContainer;
+  display: grid;
+  grid-row: 100%;
+}
+
+.suggestionItem {
+  background-color: rgb(112, 112, 112);
+  color: white;
+  border: solid rgba(197, 197, 197, 0.403) 1px;
+  padding: 4px;
+  cursor: pointer;
+  height: 40px;
+  font-size: 1em;
+  max-width: 500px;
+  min-width: 500px;
+  z-index: 2;
+}
