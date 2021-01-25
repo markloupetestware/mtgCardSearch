@@ -52,6 +52,16 @@
 }
 .currentCardImage {
   border-radius: 5% / 3.75%;
+  z-index: 1;
+}
+.secondCardImage {
+  position: absolute;
+  border-radius: 5% / 3.75%;
+  transform: translate(-40px, -40px);
+  z-index: 0;
+}
+.secondCardImage:hover {
+  z-index: 2;
 }
 .loadingContainer {
   position: absolute;

@@ -26,7 +26,30 @@ const HistoryTab = ({
     <div className={[styles.historyContainer].join(" ")}>
       {searchHistory.length > 1
         ? searchHistory.map((item: any, i: number) => {
-            return (
+            return item.card_faces ? (
+              <>
+                <img
+                  className={styles.smallImage}
+                  key={i}
+                  src={[
+                    item.card_faces[0].image_uris.small,
+                    styles.padding,
+                  ].join(" ")}
+                  onClick={() => handleClick(i)}
+                />
+
+                <div className={[styles.doubleSideHover, styles.padding].join(" ")}>
+                  <img
+                    className={styles.firstHoverImage}
+                    src={item.card_faces[0].image_uris.normal}
+                  />
+                  <img
+                    className={styles.secondHoverImage}
+                    src={item.card_faces[1].image_uris.normal}
+                  />
+                </div>
+              </>
+            ) : (
               <>
                 {item.image_uris?.small ? (
                   <>

@@ -6,11 +6,29 @@
 }
 .hoverImage {
   position: fixed;
+  left: 0;
+  top: 0;
+  display: none;
+  z-index: 2;
+  border-radius: 5% / 3.75%;
+}
+.firstHoverImage {
+  position: fixed;
+  /* display: none; */
+  border-radius: 5% / 3.75%;
+}
+.secondHoverImage {
+  position: fixed;
+  /* display: none; */
+  border-radius: 5% / 3.75%;
+  transform: translateX(488px);
+}
+.doubleSideHover {
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 2;
   display: none;
-  border-radius: 5% / 3.75%;
 }
 .historyContainer {
   display: grid;
@@ -20,9 +38,13 @@
   padding-right: 73px;
   padding-top: 10px;
 }
+.smallImage:hover + .doubleSideHover {
+  display: block;
+}
 .smallImage:hover + .hoverImage {
   display: block;
 }
+
 .padding {
   padding: 5px;
 }

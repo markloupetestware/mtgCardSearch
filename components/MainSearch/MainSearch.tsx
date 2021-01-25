@@ -52,6 +52,7 @@ const MainSearch = ({
   const [loading, setLoading] = useState(false);
 
   const debouncedSearchTerm = useDebounce(value, 500);
+  console.log(currentCard);
 
   useEffect(() => {
     if (debouncedSearchTerm) {
@@ -185,6 +186,21 @@ const MainSearch = ({
                   </div>
                 </>
               </div>
+            </>
+          ) : currentCard.card_faces ? (
+            <>
+              {currentCard.card_faces.map((item: any, index: number) => {
+                return (
+                  <img
+                    className={
+                      index == 0
+                        ? styles.currentCardImage
+                        : styles.secondCardImage
+                    }
+                    src={item.image_uris.normal}
+                  />
+                );
+              })}
             </>
           ) : (
             <img
