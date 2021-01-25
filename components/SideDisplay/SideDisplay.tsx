@@ -76,7 +76,7 @@ const SideDisplay = ({
           className={styles.commanderTab}
           style={{ display: currentTab.HistoryTab ? "none" : "block" }}
         >
-          <CommanderTab currentCard={currentCard} />
+          <CommanderTab />
         </div>
       </div>
     </div>
