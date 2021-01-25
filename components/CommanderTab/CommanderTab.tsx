@@ -15,6 +15,7 @@ const CommanderTab = () => {
 
   useEffect(() => {
     console.log("initial render");
+    //@ts-ignore
     const items = JSON.parse(localStorage.getItem("playerData"));
     if (items) {
       setPlayerData(items);
