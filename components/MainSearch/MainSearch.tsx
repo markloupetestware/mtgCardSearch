@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 
 import TextField from "@material-ui/core/TextField";
-import { withStyles, Theme, createStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 
 import getCard from "../../utils/getCard";
 import useDebounce from "../../utils/useDebounce";
