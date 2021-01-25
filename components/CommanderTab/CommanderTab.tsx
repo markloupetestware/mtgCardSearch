@@ -4,13 +4,7 @@ import PlayerContainer from "../PlayerContainer/PlayerContainer";
 import styles from "./commanderTab.module.css";
 
 const CommanderTab = () => {
-  const [playerData, setPlayerData] = useState([
-    {
-      name: "",
-      lifeTotal: 40,
-      commander: "",
-    },
-  ]);
+  const [playerData, setPlayerData] = useState<any>([]);
   const [updateStorage, setUpdateStorage] = useState(true);
 
   useEffect(() => {
@@ -19,16 +13,21 @@ const CommanderTab = () => {
     const items = JSON.parse(localStorage.getItem("playerData"));
     if (items) {
       setPlayerData(items);
-    }
+    } else
+      setPlayerData([
+        {
+          name: "",
+          lifeTotal: 40,
+          commander: "",
+        },
+      ]);
   }, []);
 
   useEffect(() => {
-    console.log("trigger");
-
     localStorage.setItem("playerData", JSON.stringify(playerData));
   }, [playerData, updateStorage]);
 
-  function handleClick() {
+  function handleNewPlayer() {
     if (playerData.length < 8) {
       setPlayerData([
         ...playerData,
@@ -41,11 +40,32 @@ const CommanderTab = () => {
     }
   }
 
+  function handleGameReset() {
+    setPlayerData([
+      {
+        name: "",
+        lifeTotal: 40,
+        commander: "",
+      },
+    ]);
+  }
+  function handleLifeReset() {
+    playerData.map((item: any, index: number) => {
+      item.lifeTotal = 40;
+      let playerObject = playerData;
+      playerObject[index].lifeTotal = 40;
+      setPlayerData(playerObject);
+      setUpdateStorage(!updateStorage);
+    });
+  }
+
   return (
     <>
-      <button onClick={handleClick}>Add Player</button>
+      <button onClick={handleNewPlayer}>Add Player</button>
+      <button onClick={handleGameReset}>New Game</button>
+      <button onClick={handleLifeReset}>Reset Current Game</button>
       <div className={styles.commanderContainer}>
-        {playerData.map((item, i) => {
+        {playerData.map((item: any, i: number) => {
           return (
             <div>
               <PlayerContainer

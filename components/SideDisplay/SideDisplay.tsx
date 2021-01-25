@@ -19,8 +19,8 @@ const SideDisplay = ({
   currentCard,
 }: HistoryTabProps) => {
   const [currentTab, setCurrentTab] = useState({
-    HistoryTab: true,
-    CommanderTab: false,
+    HistoryTab: false,
+    CommanderTab: true,
   });
 
   return (

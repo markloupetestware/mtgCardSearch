@@ -180,7 +180,7 @@ const PlayerContainer = ({
             +
           </button>
           <div className={styles.playerLifeNumber}>
-            {`   ${lifeTotalDisplay}   `}
+            {`   ${playerData[index].lifeTotal}   `}
           </div>
           <button
             className={styles.lifeButton}
@@ -219,7 +219,12 @@ const PlayerContainer = ({
             autoComplete="off"
             onSubmit={(event) => event.preventDefault()}
           >
-            <input value={value} onChange={handleChange} placeholder="search" />
+            <input
+              value={value}
+              onChange={handleChange}
+              onKeyDown={handleEnterPress}
+              placeholder="search"
+            />
           </form>
           <div
             className={[styles.suggestionsContainer, styles.center].join(" ")}
