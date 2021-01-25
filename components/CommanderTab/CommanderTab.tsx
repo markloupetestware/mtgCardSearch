@@ -1,21 +1,65 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PlayerContainer from "../PlayerContainer/PlayerContainer";
 
 import styles from "./commanderTab.module.css";
 
-const CommanderTab = ({ currentCard }: any) => {
-  const playerContainers = Array.apply(null, Array(6)).map(function () {});
+const CommanderTab = () => {
+  const [playerData, setPlayerData] = useState([
+    {
+      name: "",
+      lifeTotal: 40,
+      commander: "",
+    },
+  ]);
+  const [updateStorage, setUpdateStorage] = useState(true);
+
+  useEffect(() => {
+    console.log("initial render");
+    const items = JSON.parse(localStorage.getItem("playerData"));
+    if (items) {
+      setPlayerData(items);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("trigger");
+
+    localStorage.setItem("playerData", JSON.stringify(playerData));
+  }, [playerData, updateStorage]);
+
+  function handleClick() {
+    if (playerData.length < 8) {
+      setPlayerData([
+        ...playerData,
+        {
+          name: "",
+          lifeTotal: 40,
+          commander: "",
+        },
+      ]);
+    }
+  }
 
   return (
-    <div className={styles.commanderContainer}>
-      {playerContainers.map((item, i) => {
-        return (
-          <div>
-            <PlayerContainer currentCard={currentCard} index={i} />
-          </div>
-        );
-      })}
-    </div>
+    <>
+      <button onClick={handleClick}>Add Player</button>
+      <div className={styles.commanderContainer}>
+        {playerData.map((item, i) => {
+          return (
+            <div>
+              <PlayerContainer
+                updateStorage={updateStorage}
+                setUpdateStorage={setUpdateStorage}
+                index={i}
+                item={item}
+                playerData={playerData}
+                setPlayerData={setPlayerData}
+              />
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 };
 
