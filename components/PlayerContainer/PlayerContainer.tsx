@@ -31,27 +31,34 @@ const SearchTextField = withStyles({
   },
 })(TextField);
 
-const PlayerContainer = ({ index, playerData, setPlayerData }: any) => {
-
-  const [lifeTotalDisplay, setLifeTotalDisplay] = useState(playerData[index].lifeTotal);
+const PlayerContainer = ({
+  index,
+  playerData,
+  setPlayerData,
+  setUpdateStorage,
+  updateStorage,
+}: any) => {
+  const [lifeTotalDisplay, setLifeTotalDisplay] = useState(
+    playerData[index].lifeTotal
+  );
   const [value, setValue] = useState("");
   const [nameValue, setNameValue] = useState("");
   const [nameDisplay, setNameDisplay] = useState("");
-  
 
   const [suggestions, setSuggestions] = useState<any>([]);
   const [loading, setLoading] = useState(false);
-  
+
   function handleNameChange(e: any) {
-  setNameValue(e.target.value)
+    setNameValue(e.target.value);
   }
 
-  function handleKeyDown(e:any){
-    if(e.key == "Enter"){
-      let playerObject = playerData
-      playerObject[index].name = e.target.value
-      setPlayerData(playerObject)
-      setNameDisplay(e.target.value)
+  function handleKeyDown(e: any) {
+    if (e.key == "Enter") {
+      let playerObject = playerData;
+      playerObject[index].name = e.target.value;
+      setPlayerData(playerObject);
+      setNameDisplay(e.target.value);
+      setUpdateStorage(!updateStorage);
     }
   }
 
@@ -89,9 +96,10 @@ const PlayerContainer = ({ index, playerData, setPlayerData }: any) => {
       setLoading(true);
       getCard(value)
         .then((data: any) => {
-          let playerObject = playerData
-          playerObject[index].commander = data.payload.data[0]
-          setPlayerData(playerObject)
+          let playerObject = playerData;
+          playerObject[index].commander = data.payload.data[0];
+          setPlayerData(playerObject);
+          setUpdateStorage(!updateStorage);
         })
         .then(() => {
           setValue("");
@@ -109,9 +117,10 @@ const PlayerContainer = ({ index, playerData, setPlayerData }: any) => {
     setLoading(true);
     getCard(e.target.value)
       .then((data: any) => {
-        let playerObject = playerData
-        playerObject[index].commander = data.payload.data[0]
-        setPlayerData(playerObject)
+        let playerObject = playerData;
+        playerObject[index].commander = data.payload.data[0];
+        setPlayerData(playerObject);
+        setUpdateStorage(!updateStorage);
       })
       .then(() => {
         setValue("");
@@ -122,17 +131,18 @@ const PlayerContainer = ({ index, playerData, setPlayerData }: any) => {
   return (
     <div className={styles.playerContainer}>
       <div className={styles.infoContainer}>
-        {nameDisplay ? (
+        {playerData[index].name ? (
           <div
             className={styles.playerName}
             onClick={() => {
-              let playerObject = playerData
-              playerObject[index].name = ""
-              setPlayerData(playerObject)
-              setNameDisplay("")
+              let playerObject = playerData;
+              playerObject[index].name = "";
+              setPlayerData(playerObject);
+              setUpdateStorage(!updateStorage);
+              setNameDisplay("");
             }}
           >
-            {nameDisplay}
+            {playerData[index].name}
           </div>
         ) : (
           <>
@@ -144,13 +154,13 @@ const PlayerContainer = ({ index, playerData, setPlayerData }: any) => {
               className={styles.playerNameInput}
             />
             <button
-              onClick={() =>{
-                let playerObject = playerData
-                playerObject[index].name = nameValue
-                setPlayerData(playerObject)
-                setNameDisplay(nameValue)
-              }
-              }
+              onClick={() => {
+                let playerObject = playerData;
+                playerObject[index].name = nameValue;
+                setPlayerData(playerObject);
+                setUpdateStorage(!updateStorage);
+                setNameDisplay(nameValue);
+              }}
             >
               set
             </button>
@@ -159,13 +169,13 @@ const PlayerContainer = ({ index, playerData, setPlayerData }: any) => {
         <div className={styles.lifeTotalsContainer}>
           <button
             className={styles.lifeButton}
-            onClick={() =>{
-              let playerObject = playerData
-              playerObject[index].lifeTotal++
-              setPlayerData(playerObject)
-              setLifeTotalDisplay(playerData[index].lifeTotal)
-            }
-            }
+            onClick={() => {
+              let playerObject = playerData;
+              playerObject[index].lifeTotal++;
+              setPlayerData(playerObject);
+              setUpdateStorage(!updateStorage);
+              setLifeTotalDisplay(playerData[index].lifeTotal);
+            }}
           >
             +
           </button>
@@ -174,13 +184,13 @@ const PlayerContainer = ({ index, playerData, setPlayerData }: any) => {
           </div>
           <button
             className={styles.lifeButton}
-            onClick={() =>{
-              let playerObject = playerData
-              playerObject[index].lifeTotal--
-              setPlayerData(playerObject)
-              setLifeTotalDisplay(playerData[index].lifeTotal)
-            }
-            }
+            onClick={() => {
+              let playerObject = playerData;
+              playerObject[index].lifeTotal--;
+              setPlayerData(playerObject);
+              setUpdateStorage(!updateStorage);
+              setLifeTotalDisplay(playerData[index].lifeTotal);
+            }}
           >
             -
           </button>
@@ -189,48 +199,45 @@ const PlayerContainer = ({ index, playerData, setPlayerData }: any) => {
       <div className={styles.commanderCardContainer}>
         <div className={styles.commanderCardImageContainer}>
           {playerData[index].commander ? (
-            <img className={styles.setCommanderCard} src={playerData[index].commander.image_uris.small} />
+            <img
+              className={styles.setCommanderCard}
+              src={playerData[index].commander.image_uris.small}
+            />
           ) : (
             <img className={styles.cardBack} src="cardBack.png" />
           )}
         </div>
         <div
-        className={[
-          styles.searchInputContainer,
-          styles.padding,
-          styles.center,
-        ].join(" ")}
-      >
-        <form
-          className={styles.searchInputForm}
-          autoComplete="off"
-          onSubmit={(event) => event.preventDefault()}
+          className={[
+            styles.searchInputContainer,
+            styles.padding,
+            styles.center,
+          ].join(" ")}
         >
-          <SearchTextField
-            onKeyDown={handleEnterPress}
-            fullWidth
-            value={value}
-            onChange={handleChange}
-            id="filled-basic"
-            label="Search"
-            variant="filled"
-          />
-        </form>
-        <div className={[styles.suggestionsContainer, styles.center].join(" ")}>
-        {suggestions.map((item: any, i: number) => {
-          return (
-            <button
-              value={item}
-              key={i}
-              className={styles.suggestionItem}
-              onClick={handleClick}
-            >
-              {item}
-            </button>
-          );
-        })}
-      </div>
-      </div>
+          <form
+            className={styles.searchInputForm}
+            autoComplete="off"
+            onSubmit={(event) => event.preventDefault()}
+          >
+            <input value={value} onChange={handleChange} placeholder="search" />
+          </form>
+          <div
+            className={[styles.suggestionsContainer, styles.center].join(" ")}
+          >
+            {suggestions.map((item: any, i: number) => {
+              return (
+                <button
+                  value={item}
+                  key={i}
+                  className={styles.suggestionItem}
+                  onClick={handleClick}
+                >
+                  {item}
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
