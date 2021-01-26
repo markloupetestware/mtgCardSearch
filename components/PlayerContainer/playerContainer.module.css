@@ -7,7 +7,7 @@
   background-color: rgb(78, 78, 78);
 }
 .playerName {
-  font-size: 1.2em;
+  font-size: 1.8em;
 }
 .commanderCardContainer {
   grid-area: commander;
@@ -27,10 +27,10 @@
 .lifeButton {
   background-color: black;
   color: white;
-  font-size: 1.2em;
+  font-size: 1.8em;
   cursor: pointer;
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: none;
   outline: none;
@@ -40,7 +40,16 @@
   color: black;
 }
 .playerLifeNumber {
-  font-size: 1.4em;
+  font-size: 2em;
+}
+.burnButton {
+  margin: 20px;
+  border-radius: 50%;
+  padding: 10px;
+  background-color: orange;
+  border: none;
+  font-weight: bold;
+  outline: none;
 }
 .setCommanderCard {
   border-radius: 5% / 3.75%;
@@ -51,9 +60,9 @@
 }
 
 .suggestionsContainer {
+  position: absolute;
   grid-area: suggestionsContainer;
   display: grid;
-  grid-row: 100%;
 }
 
 .suggestionItem {
@@ -63,8 +72,8 @@
   padding: 4px;
   cursor: pointer;
   height: 40px;
-  font-size: 1em;
-  max-width: 500px;
-  min-width: 500px;
+  font-size: 0.8em;
+  max-width: 200px;
+  min-width: 200px;
   z-index: 2;
 }

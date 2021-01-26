@@ -14,12 +14,10 @@
 }
 .firstHoverImage {
   position: fixed;
-  /* display: none; */
   border-radius: 5% / 3.75%;
 }
 .secondHoverImage {
   position: fixed;
-  /* display: none; */
   border-radius: 5% / 3.75%;
   transform: translateX(488px);
 }
