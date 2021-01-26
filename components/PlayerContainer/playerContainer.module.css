@@ -49,6 +49,7 @@
   background-color: orange;
   border: none;
   font-weight: bold;
+  outline: none;
 }
 .setCommanderCard {
   border-radius: 5% / 3.75%;
