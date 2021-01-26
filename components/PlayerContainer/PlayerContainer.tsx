@@ -128,6 +128,18 @@ const PlayerContainer = ({
       });
   }
 
+function handleBurn(){
+  let playerObject = playerData;
+  playerObject.map((item:any, i:number)=>{
+    if(index!==i){
+playerObject[i].lifeTotal = playerObject[i].lifeTotal - 1
+setPlayerData(playerObject);
+    }
+  })
+  setUpdateStorage(!updateStorage);
+
+}
+
   return (
     <div className={styles.playerContainer}>
       <div className={styles.infoContainer}>
@@ -194,6 +206,9 @@ const PlayerContainer = ({
           >
             -
           </button>
+          <div>
+          <button className={styles.burnButton} onClick={handleBurn}>Burn!</button>
+          </div>
         </div>
       </div>
       <div className={styles.commanderCardContainer}>
@@ -204,7 +219,7 @@ const PlayerContainer = ({
               src={playerData[index].commander.image_uris.small}
             />
           ) : (
-            <img className={styles.cardBack} src="cardBack.png" />
+            <img className={styles.cardBack} src="cardBackSmall.png" />
           )}
         </div>
         <div
