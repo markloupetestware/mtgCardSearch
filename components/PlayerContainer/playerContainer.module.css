@@ -50,6 +50,11 @@
   border: none;
   font-weight: bold;
   outline: none;
+  cursor: pointer;
+}
+.burnButton:active {
+  background-color: orangered;
+  color: white;
 }
 .setCommanderCard {
   border-radius: 5% / 3.75%;
