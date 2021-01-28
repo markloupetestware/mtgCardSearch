@@ -52,7 +52,7 @@ const MainSearch = ({
   const [loading, setLoading] = useState(false);
 
   const debouncedSearchTerm = useDebounce(value, 500);
-  console.log(currentCard);
+
 
   useEffect(() => {
     if (debouncedSearchTerm) {
@@ -66,7 +66,7 @@ const MainSearch = ({
             const results = data.payload.data.map((item: any) => {
               return item.name;
             });
-            console.log(results, "results");
+           
             setSuggestions(results);
           })
           .catch((error: any) => setSuggestions(["No cards found"]));
@@ -127,6 +127,9 @@ const MainSearch = ({
         setLoading(false);
       });
   }
+
+  console.log("CC",currentCard, "CC");
+  
   return (
     <div className={[styles.mainContainer].join(" ")}>
       <div
@@ -187,9 +190,9 @@ const MainSearch = ({
                 </>
               </div>
             </>
-          ) : currentCard.card_faces ? (
+          ) : !currentCard.image_uris ? (
             <>
-              {currentCard.card_faces.map((item: any, index: number) => {
+              {currentCard.card_faces.map((item: any, index: number) => { 
                 return (
                   <img
                     className={
