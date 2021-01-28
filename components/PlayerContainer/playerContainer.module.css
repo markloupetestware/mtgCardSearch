@@ -1,13 +1,10 @@
 .playerContainer {
   display: grid;
   grid-template-areas: "details commander";
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   padding: 10px;
   margin: 5px;
   background-color: rgb(78, 78, 78);
-}
-.playerName {
-  font-size: 1.8em;
 }
 .commanderCardContainer {
   grid-area: commander;
@@ -23,15 +20,50 @@
 }
 .infoContainer {
   grid-area: details;
+  display: grid;
+  grid-template-areas:
+    "playerName"
+    "commanderDamageContainer"
+    "lifeCounter";
+  grid-template-rows: 1fr 3fr 1fr;
 }
-.lifeButton {
+.playerNameInput {
+  grid-area: playerName;
+  width: 70%;
+}
+.playerName {
+  grid-area: playerName;
+  font-size: 1.4em;
+}
+.commanderDamageContainer {
+  grid-area: commanderDamageContainer;
+}
+.lifeTotalsContainer {
+  grid-area: lifeCounter;
+  display: grid;
+  grid-template-areas: "addLifeButton lifeTotal subtractLifeButton burnButton";
+}
+.addLifeButton {
+  grid-area: addLifeButton;
   background-color: black;
   color: white;
   font-size: 1.8em;
   cursor: pointer;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 20%;
+  border: none;
+  outline: none;
+}
+.subtractLifeButton {
+  grid-area: subtractLifeButton;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  font-size: 1.8em;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 20%;
   border: none;
   outline: none;
 }
@@ -40,12 +72,12 @@
   color: black;
 }
 .playerLifeNumber {
+  grid-area: lifeTotal;
   font-size: 2em;
 }
 .burnButton {
-  margin: 20px;
-  border-radius: 50%;
-  padding: 10px;
+  height: 40px;
+  border-radius: 10%;
   background-color: orange;
   border: none;
   font-weight: bold;
