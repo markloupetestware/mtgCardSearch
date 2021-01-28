@@ -26,7 +26,8 @@ const HistoryTab = ({
     <div className={[styles.historyContainer].join(" ")}>
       {searchHistory.length > 1
         ? searchHistory.map((item: any, i: number) => {
-            return item.card_faces ? (
+          
+            return item.layout === "modal_dfc" ? (
               <>
                 <img
                   className={styles.smallImage}

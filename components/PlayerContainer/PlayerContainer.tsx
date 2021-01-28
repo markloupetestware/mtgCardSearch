@@ -45,6 +45,7 @@ const PlayerContainer = ({
   const [nameValue, setNameValue] = useState("");
   const [nameDisplay, setNameDisplay] = useState("");
 
+
   const [suggestions, setSuggestions] = useState<any>([]);
   const [loading, setLoading] = useState(false);
 
@@ -157,7 +158,7 @@ setPlayerData(playerObject);
             {playerData[index].name}
           </div>
         ) : (
-          <>
+          <div>
             <input
               placeholder={"set player name"}
               onKeyDown={handleKeyDown}
@@ -166,6 +167,7 @@ setPlayerData(playerObject);
               className={styles.playerNameInput}
             />
             <button
+            className={styles.playerNameButton}
               onClick={() => {
                 let playerObject = playerData;
                 playerObject[index].name = nameValue;
@@ -176,11 +178,20 @@ setPlayerData(playerObject);
             >
               set
             </button>
-          </>
+          </div>
         )}
+        {/* <div className={styles.commanderDamageContainer}>
+           {playerData.map((item:any , i:number)=>{
+             console.log(playerData[index].name === item.name);
+             console.log(playerData[index].name, item.name);
+             
+               const [commmanderDamage, setCommanderDamage] = useState(0)
+             return item.name || playerData[index].name !== item.name ? <div key={i}><button key={i} onClick={()=>setCommanderDamage(commmanderDamage+1)}>+</button>{commmanderDamage}<button onClick={()=>setCommanderDamage(commmanderDamage-1)}>-</button>{item.name}</div> : null
+           })}
+        </div> */}
         <div className={styles.lifeTotalsContainer}>
           <button
-            className={styles.lifeButton}
+            className={styles.addLifeButton}
             onClick={() => {
               let playerObject = playerData;
               playerObject[index].lifeTotal++;
@@ -195,7 +206,7 @@ setPlayerData(playerObject);
             {`   ${playerData[index].lifeTotal}   `}
           </div>
           <button
-            className={styles.lifeButton}
+            className={styles.subtractLifeButton}
             onClick={() => {
               let playerObject = playerData;
               playerObject[index].lifeTotal--;
@@ -206,6 +217,7 @@ setPlayerData(playerObject);
           >
             -
           </button>
+
           <div>
           <button className={styles.burnButton} onClick={handleBurn}>Burn!</button>
           </div>

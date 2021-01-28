@@ -7,7 +7,7 @@
 .tabTitleContainer {
   grid-area: tabTitles;
   display: grid;
-  grid-template-areas: "historyTabTitle commanderTabTitle";
+  grid-template-areas: "commanderTabTitle historyTabTitle";
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 5px;
 }

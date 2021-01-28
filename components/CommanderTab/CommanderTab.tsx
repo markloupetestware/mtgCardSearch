@@ -61,9 +61,9 @@ const CommanderTab = () => {
 
   return (
     <>
-      <button onClick={handleNewPlayer}>Add Player</button>
-      <button onClick={handleGameReset}>New Game</button>
-      <button onClick={handleLifeReset}>Reset Current Game</button>
+      <button className={styles.button} onClick={handleNewPlayer}>Add Player</button>
+      <button className={styles.button} onClick={handleGameReset}>New Game</button>
+      <button className={styles.button} onClick={handleLifeReset}>Reset Current Game</button>
       <div className={styles.commanderContainer}>
         {playerData.map((item: any, i: number) => {
           return (
