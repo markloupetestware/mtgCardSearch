@@ -138,7 +138,6 @@ setPlayerData(playerObject);
     }
   })
   setUpdateStorage(!updateStorage);
-
 }
 
   return (
@@ -194,13 +193,13 @@ setPlayerData(playerObject);
             className={styles.addLifeButton}
             onClick={() => {
               let playerObject = playerData;
-              playerObject[index].lifeTotal++;
+              playerObject[index].lifeTotal--;
               setPlayerData(playerObject);
               setUpdateStorage(!updateStorage);
               setLifeTotalDisplay(playerData[index].lifeTotal);
             }}
           >
-            +
+            -
           </button>
           <div className={styles.playerLifeNumber}>
             {`   ${playerData[index].lifeTotal}   `}
@@ -209,13 +208,13 @@ setPlayerData(playerObject);
             className={styles.subtractLifeButton}
             onClick={() => {
               let playerObject = playerData;
-              playerObject[index].lifeTotal--;
+              playerObject[index].lifeTotal++;
               setPlayerData(playerObject);
               setUpdateStorage(!updateStorage);
               setLifeTotalDisplay(playerData[index].lifeTotal);
             }}
           >
-            -
+            +
           </button>
 
           <div>
