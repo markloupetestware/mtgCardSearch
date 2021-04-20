@@ -24,12 +24,6 @@ useEffect(()=>{
   }
 },[])
 
-console.log('---------------------');
-console.log(currentCard);
-console.log('---------------------');
-
-
-
 useEffect(()=>{
   localStorage.setItem('searchHistory', JSON.stringify(searchHistory))
 },[searchHistory])
