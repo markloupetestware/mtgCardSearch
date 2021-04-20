@@ -47,12 +47,10 @@ const MainSearch = ({
   setCurrentCard,
 }: HistoryTabProps) => {
   const [value, setValue] = useState("");
-  // const [searchingSuggestions, setSearchingSuggestions] = useState(false);
   const [suggestions, setSuggestions] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
   const debouncedSearchTerm = useDebounce(value, 500);
-
 
   useEffect(() => {
     if (debouncedSearchTerm) {
@@ -118,7 +116,7 @@ const MainSearch = ({
           return item.name;
         });
         if (!results.includes(currentCard.name)) {
-          setSearchHistory([...searchHistory, currentCard].reverse());
+          setSearchHistory([currentCard, ...searchHistory]);
         }
       })
       .then(() => {

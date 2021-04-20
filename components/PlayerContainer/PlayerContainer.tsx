@@ -77,7 +77,6 @@ const PlayerContainer = ({
             const results = data.payload.data.map((item: any) => {
               return item.name;
             });
-            console.log(results, "results");
             setSuggestions(results);
           })
           .catch((error: any) => setSuggestions(["No cards found"]));
@@ -179,15 +178,6 @@ setPlayerData(playerObject);
             </button>
           </div>
         )}
-        {/* <div className={styles.commanderDamageContainer}>
-           {playerData.map((item:any , i:number)=>{
-             console.log(playerData[index].name === item.name);
-             console.log(playerData[index].name, item.name);
-             
-               const [commmanderDamage, setCommanderDamage] = useState(0)
-             return item.name || playerData[index].name !== item.name ? <div key={i}><button key={i} onClick={()=>setCommanderDamage(commmanderDamage+1)}>+</button>{commmanderDamage}<button onClick={()=>setCommanderDamage(commmanderDamage-1)}>-</button>{item.name}</div> : null
-           })}
-        </div> */}
         <div className={styles.lifeTotalsContainer}>
           <button
             className={styles.addLifeButton}

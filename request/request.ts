@@ -35,7 +35,6 @@ const APIRequest = (method: APIMethod) => (
   const url = Object.keys(params).length
     ? `${urlWithSubDirectories}?${queryString.stringify(queryStringParams)}`
     : `${urlWithSubDirectories}`;
-  console.log(url, "url");
 
   // Start our request
   return fetch(url, requestOptions)
