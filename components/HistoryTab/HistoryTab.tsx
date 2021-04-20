@@ -13,6 +13,7 @@ const HistoryTab = ({
   setSearchHistory,
   currentCard,
 }: HistoryTabProps) => {
+
   function handleClick(i: number) {
     const results = searchHistory.map((item: any) => {
       return item.name;
@@ -22,8 +23,14 @@ const HistoryTab = ({
     }
     setCurrentCard(searchHistory[i]);
   }
+
+  function clearHistory(){
+    setSearchHistory([])
+  }
   return (
-    <div className={[styles.historyContainer].join(" ")}>
+    <>
+      <div className={styles.historySettings}><button onClick={clearHistory} className={styles.clearHistoryButton}>Clear History</button></div>
+    <div className={styles.historyContainer}>
       {searchHistory.length > 1
         ? searchHistory.map((item: any, i: number) => {
           
@@ -71,7 +78,7 @@ const HistoryTab = ({
             );
           })
         : null}
-    </div>
+    </div></>
   );
 };
 
