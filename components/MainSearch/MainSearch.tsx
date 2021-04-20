@@ -1,17 +1,17 @@
-import { useState, useEffect } from "react";
-
 import React from "react";
-
+//hooks
+import { useState, useEffect } from "react";
+//material UI
 import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
-
+//in app
 import getCard from "../../utils/getCard";
 import useDebounce from "../../utils/useDebounce";
-
+//styles
 import styles from "./mainSearch.module.css";
 
 interface HistoryTabProps {
-  searchHistory: any;
+  searchHistory: Array<any>;
   setCurrentCard: any;
   setSearchHistory: any;
   currentCard: any;
@@ -49,20 +49,19 @@ const MainSearch = ({
   const [value, setValue] = useState("");
   // const [searchingSuggestions, setSearchingSuggestions] = useState(false);
   const [suggestions, setSuggestions] = useState<any>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const debouncedSearchTerm = useDebounce(value, 500);
 
 
   useEffect(() => {
     if (debouncedSearchTerm) {
-      // setSearchingSuggestions(true);
+
       if (value.length < 2) {
         setSuggestions([]);
       } else if (value.length > 2) {
         getCard(debouncedSearchTerm)
           .then((data: any) => {
-            // setSearchingSuggestions(false);
             const results = data.payload.data.map((item: any) => {
               return item.name;
             });
