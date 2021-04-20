@@ -24,6 +24,12 @@ useEffect(()=>{
   }
 },[])
 
+console.log('---------------------');
+console.log(currentCard);
+console.log('---------------------');
+
+
+
 useEffect(()=>{
   localStorage.setItem('searchHistory', JSON.stringify(searchHistory))
 },[searchHistory])
@@ -47,8 +53,7 @@ useEffect(()=>{
     <div className={styles.historyContainer}>
       {searchHistory.length > 1
         ? searchHistory.map((item: any, i: number) => {
-          
-            return item.layout === "modal_dfc" ? (
+            return item.layout === "modal_dfc" || item.layout === "transform" ? (
               <>
                 <img
                   className={styles.smallImage}
