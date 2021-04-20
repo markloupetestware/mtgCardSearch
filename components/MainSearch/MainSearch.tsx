@@ -118,7 +118,7 @@ const MainSearch = ({
           return item.name;
         });
         if (!results.includes(currentCard.name)) {
-          setSearchHistory([...searchHistory, currentCard].reverse());
+          setSearchHistory([currentCard, ...searchHistory]);
         }
       })
       .then(() => {

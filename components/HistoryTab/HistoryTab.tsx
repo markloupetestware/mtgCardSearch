@@ -1,3 +1,5 @@
+import {useEffect, useState} from 'react'
+
 import styles from "./historyTab.module.css";
 
 interface HistoryTabProps {
@@ -13,6 +15,18 @@ const HistoryTab = ({
   setSearchHistory,
   currentCard,
 }: HistoryTabProps) => {
+
+useEffect(()=>{
+  //@ts-ignore
+  const savedHistory = JSON.parse(localStorage.getItem("searchHistory"))
+  if (savedHistory) {
+    setSearchHistory(savedHistory)
+  }
+},[])
+
+useEffect(()=>{
+  localStorage.setItem('searchHistory', JSON.stringify(searchHistory))
+},[searchHistory])
 
   function handleClick(i: number) {
     const results = searchHistory.map((item: any) => {
