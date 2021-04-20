@@ -127,8 +127,6 @@ const MainSearch = ({
         setLoading(false);
       });
   }
-
-  console.log("CC",currentCard, "CC");
   
   return (
     <div className={[styles.mainContainer].join(" ")}>
