@@ -1,9 +1,11 @@
 import Head from "next/head";
+//hooks
 import { useState } from "react";
+//components
 import MainSearch from "../components/MainSearch/MainSearch";
 import SideDisplay from "../components/SideDisplay/SideDisplay";
 import ModeButton from "../components/SmallComponents/ModeButton/ModeButton";
-
+//styles
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -12,9 +14,10 @@ export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
 
   return (
+    //control darkmode
     <div className={darkMode ? styles.containerDark : styles.containerLight}>
       <Head>
-        <title>Command Centre</title>
+        <title>Remote Commander</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.main}>
@@ -23,7 +26,7 @@ export default function Home() {
           <ModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
         </div>
         <h1 className={[styles.title, styles.center].join(" ")}>
-          Command Centre
+          Remote Commander
         </h1>
         <MainSearch
           setSearchHistory={setSearchHistory}
